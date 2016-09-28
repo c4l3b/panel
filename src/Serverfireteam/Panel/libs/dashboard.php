@@ -35,7 +35,7 @@ class dashboard
             if ( in_array($modelName, self::$urls)) {
                $model = "Serverfireteam\\Panel\\".$modelName;
             } else {
-               $model = $appHelper->getNameSpace() . $modelName;
+               $model = $appHelper->getModelClass($modelName);
             }
 
             //if (class_exists($value)) {

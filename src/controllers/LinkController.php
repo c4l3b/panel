@@ -36,7 +36,7 @@ class LinkController extends CrudController {
         Link::creating(function($link)
         {
             $appHelper = new libs\AppHelper();
-            return ( class_exists( $appHelper->getNameSpace() . $link['url'] ));
+            return ( class_exists( $appHelper->getModelClass($link['url']) ));
         });
 
         $helpMessage = \Lang::get('panel::fields.links_help');
