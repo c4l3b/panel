@@ -20,9 +20,14 @@ class AppHelper {
         if (isset($customNamespaces[$model])) {
             $namespace = $customNamespaces[$model];
         } else {
-            $namespace = \Config::get('panel.overrideDefaultModelNamespace', $this->getAppNamespace());
+            $namespace = \Config::get('panel.overrideDefaultModelNamespace') ?: $this->getAppNamespace();
         }
-        return $namespace.$model;
+        return $this->namespaceJoin($namespace, $model);
+    }
+
+    public function namespaceJoin($part1, $part2)
+    {
+        return trim($part1, '\\').'\\'.trim($part2, '\\');
     }
 
     public static function validName($name) {

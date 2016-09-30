@@ -44,7 +44,9 @@ class CreateModelCommand extends GeneratorCommand {
 	 */
 	protected function getDefaultNamespace($rootNamespace)
 	{
-		return \Config::get('panel.overrideDefaultModelNamespace', $rootNamespace);
-	}
+        $namespace = \Config::get('panel.overrideDefaultModelNamespace') ?: $rootNamespace;
+        return trim($namespace, '\\');
+
+    }
 
 }
