@@ -29,9 +29,9 @@ class AdminController extends CrudController{
                 
         $this->grid = \DataGrid::source($this->filter);
         $this->grid->add('id','ID', true)->style("width:100px");
-        $this->grid->add('{{ $first_name }} {{ $last_name}}','first name');
+        $this->grid->add('{{ $first_name }} {{ $last_name }}','first name');
         $this->grid->add('email','Email');
-       $this->grid->add('{{ implode(", ", $roles->lists("name")->all()) }}', 'Role');
+        $this->grid->add('{{ $roles->lists("name")->implode(", ") }}', 'Role');
 
         $this->addStylesToGrid();
         return $this->returnView();
