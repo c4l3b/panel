@@ -55,7 +55,7 @@ class AdminController extends CrudController{
         $this->edit->add('first_name', 'firstname', 'text');
         $this->edit->add('last_name', 'lastname', 'text');
         $this->edit->add('password', 'password', 'password')->rule('required');  
-        $this->edit->add('roles','Roles','checkboxgroup')->options(Role::lists('name', 'id')->all());
+        $this->edit->add('roles','Roles','checkboxgroup')->options(Role::pluck('name', 'id')->all());
 
         return $this->returnEditView();
     }
